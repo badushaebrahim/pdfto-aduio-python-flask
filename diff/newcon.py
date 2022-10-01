@@ -18,22 +18,26 @@ txt=""
 pgno = pdfReader.numPages
 while(k< pgno):
 	# creating a page object 
+	
 	pageObj = pdfReader.getPage(k) 
 	# extracting text from page 
 	txt+=pageObj.extractText()
-	engine.save_to_file(pageObj.extractText(), 'test.mp3')
+	
 	
 	k+=1
 
 	# closing the pdf file object 
 # print(txt)
 pdfFileObj.close()
-	# try:
-		
-engine.runAndWait()
-# engine.stop()
-print("comlete")
+try:
+	add= ran = random.random()*0
+		# try:
+	firstpart, secondpart = txt[:len(txt)//2], txt[len(txt)//2:]
+	print(len(firstpart))
+	engine.save_to_file(firstpart, 'my.mp3')		
+	engine.runAndWait()
+	engine.stop()
+	print("comlete")
   	# return "te"
-	# except Exception as e:
-        #  print(e)
-        #  return e
+except Exception as e:
+        print(e)

@@ -4,7 +4,7 @@ import PyPDF2
 from gtts import gTTS
 import random
 
-from util_cleaner.cleaner import cleanaer
+
 
 random.seed(5)
 def texttosppech(fileloc):
@@ -27,17 +27,19 @@ def texttosppech(fileloc):
 		k+=1
 	
 	# closing the pdf file object 
-
+	fs = open("demofile2.txt", "a")
+	fs.write(txt)
+	fs.close()
 	pdfFileObj.close()
 	try:
-		# tts = gTTS(txt)
-		# ran = random.random()*0
+		tts = gTTS(txt)
+		ran = random.random()*0
 		##nam =rap+str(ran)+'0.mp3'
-		# nam =rap+'0.mp3'
-		# tts.save(nam)
-		restxt = cleanaer(txt)
-		print(restxt)
-		return restxt
+		nam =rap+'0.mp3'
+		tts.save(nam)
+		# restxt = cleanaer(txt)
+		print(txt)
+		return nam
 	except Exception as e:
          print(e)
          return e

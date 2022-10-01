@@ -2,23 +2,8 @@
 # from pip install -U Werkzeug import secure_filename
 from contextlib import nullcontext
 import os 
-# app = Flask(__name__)
 
-# @app.route('/upload')
-# def upload_file():
-#    return render_template('upload.html')
-	
-# @app.route('/uploader', methods = ['GET', 'POST'])
-# def upload_file():
-#    if request.method == 'POST':
-#       f = request.files['file']
-#       f.save(secure_filename(f.filename))
-#       return 'file uploaded successfully'
-		
-# if __name__ == '__main__':
-#    app.run(debug = True)
-
-# from tts.new import texttosppech
+from tts.new import texttosppech
 from flask import *  
 app = Flask(__name__)  
 # app.config[f'{os.path.realpath(os.path.dirname(__file__))}'+'/upload']
@@ -38,8 +23,11 @@ def success():
         f.save(u'./upload/{}'.format(f.filename))
         whole= dir+'/upload/'+f.filename
         # retrun whole
-        # statuss  = texttosppech(whole)
-        return render_template("success.html", name = statuss)
+        statuss  = texttosppech(whole)
+        try:
+            return send_file(str(statuss), 'conv.mp3')
+        except Exception as e:
+         return str(e)
   
 if __name__ == '__main__':  
     app.run(debug = True)  
