@@ -18,7 +18,7 @@ import os
 # if __name__ == '__main__':
 #    app.run(debug = True)
 
-from tts.new import texttosppech
+# from tts.new import texttosppech
 from flask import *  
 app = Flask(__name__)  
 # app.config[f'{os.path.realpath(os.path.dirname(__file__))}'+'/upload']
@@ -38,7 +38,7 @@ def success():
         f.save(u'./upload/{}'.format(f.filename))
         whole= dir+'/upload/'+f.filename
         # retrun whole
-        statuss  = texttosppech(whole)
+        # statuss  = texttosppech(whole)
         return render_template("success.html", name = statuss)
   
 if __name__ == '__main__':  
